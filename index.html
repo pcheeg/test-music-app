@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+  <title>80s Chart Challenge</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#100b2d" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+</head>
+<body>
+  <main id="app" class="app">
+    <section id="homeScreen" class="screen active">
+      <div class="topbar">
+        <div>
+          <h1>80s Chart Challenge</h1>
+          <p id="homePuzzleLabel">Daily Challenge</p>
+        </div>
+        <button id="statsBtn" class="iconBtn" aria-label="Stats">📊</button>
+      </div>
+
+      <div class="heroCard">
+        <p id="homeChallengeNo" class="eyebrow">Daily Challenge #1</p>
+        <div class="heroTitle">WHEN DID THESE 80s HITS FIRST ENTER THE UK TOP 40?</div>
+        <p class="heroCopy">Place each song on the timeline. The closer you are, the more points you score.</p>
+
+        <div class="homeTimelineGraphic" aria-hidden="true">
+          <div class="homeTimelineYears">
+            <span>1980</span>
+            <span>1989</span>
+          </div>
+          <div class="homeTimelineLine">
+            <i></i>
+            <b></b>
+          </div>
+        </div>
+      </div>
+
+      <button id="startBtn" class="primaryBtn">Play Today</button>
+    </section>
+
+    <section id="gameScreen" class="screen">
+      <div class="roundHeader">
+        <span id="roundLabel">Round 1 of 5</span>
+        <span id="runningScore">Score 0</span>
+      </div>
+
+      <div class="songCard">
+        <div id="songTitle" class="songTitle">TAKE ON ME</div>
+        <div id="songArtist" class="songArtist">a-ha</div>
+      </div>
+
+      <div class="timelineWrap">
+        <div id="selectedDate" class="selectedDate">OCT 1985</div>
+        <div class="timelineLabels">
+          <span>1980</span>
+          <span>1989</span>
+        </div>
+        <div id="timeline" class="timeline" aria-label="Timeline from Jan 1980 to Dec 1989">
+          <div class="ticks"></div>
+          <div id="guessMarker" class="marker guessMarker"></div>
+        </div>
+        <div class="hint">Drag the marker. It snaps to each month.</div>
+      </div>
+
+      <button id="submitBtn" class="primaryBtn">Submit</button>
+    </section>
+
+    <section id="revealScreen" class="screen">
+      <div class="revealSong">
+        <div id="revealTitle" class="songTitle">TAKE ON ME</div>
+        <div id="revealArtist" class="songArtist">a-ha</div>
+      </div>
+
+      <div class="answerGrid">
+        <div>
+          <p>Your guess</p>
+          <strong id="yourGuess">AUG 1985</strong>
+        </div>
+        <div>
+          <p>Correct answer</p>
+          <strong id="correctAnswer">—</strong>
+        </div>
+      </div>
+
+      <div class="miniTimeline">
+        <div class="timelineLabels">
+          <span>1980</span>
+          <span>1989</span>
+        </div>
+        <div id="revealTimeline" class="timeline">
+          <div class="ticks"></div>
+          <div id="revealGuessMarker" class="marker oldMarker"></div>
+          <div id="revealCorrectMarker" class="marker correctMarker"></div>
+          <div id="revealMiniLine" class="revealLine"></div>
+        </div>
+      </div>
+
+      <div id="caption" class="caption">Sliding to the correct answer...</div>
+
+      <div class="roundScore">
+        <span id="roundScoreLabel">100</span>
+        <small id="totalCountLabel">Score 0</small>
+      </div>
+
+      <button id="nextBtn" class="primaryBtn">Next Song</button>
+    </section>
+
+    <section id="resultsScreen" class="screen">
+      <h2>80s Chart Challenge</h2>
+      <p id="resultsPuzzleNo" class="muted">#1</p>
+
+      <div id="shareLine" class="shareLine">97🔥 95🔥 92🎤 88🎤 94🎤</div>
+
+      <div class="finalScore">
+        <span>Final Score</span>
+        <strong id="finalScore">931</strong>
+      </div>
+
+      <button id="shareBtn" class="primaryBtn">Share</button>
+      <button id="admireBtn" class="secondaryBtn">Admire</button>
+      <button id="answersBtn" class="secondaryBtn">Answers</button>
+    </section>
+
+    <section id="answersScreen" class="screen">
+      <div class="topbar">
+        <h2>Answers</h2>
+        <button id="backResultsBtn" class="iconBtn">×</button>
+      </div>
+      <div id="answersList" class="answersList"></div>
+    </section>
+
+    <section id="admireScreen" class="screen">
+      <div class="topbar">
+        <h2>Your Round</h2>
+        <button id="backResultsBtn2" class="iconBtn">×</button>
+      </div>
+      <div id="admireList" class="answersList"></div>
+    </section>
+
+    <section id="statsScreen" class="screen">
+      <div class="topbar">
+        <h2>Stats</h2>
+        <button id="closeStatsBtn" class="iconBtn">×</button>
+      </div>
+
+      <div class="statsGrid">
+        <div><span>Games Played</span><strong id="statPlayed">0</strong></div>
+        <div><span>Average Score</span><strong id="statAvg">0</strong></div>
+        <div><span>Best Score</span><strong id="statBest">0</strong></div>
+        <div><span>Current Streak</span><strong id="statCurrent">0</strong></div>
+        <div><span>Longest Streak</span><strong id="statLongest">0</strong></div>
+        <div><span>Perfect Answers</span><strong id="statPerfect">0</strong></div>
+      </div>
+
+      <h3>Average points by year</h3>
+      <div id="yearStats" class="yearStats"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
